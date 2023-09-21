@@ -1,0 +1,176 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* Criando variáveis com algum atributo */
+  --text-color: white;
+  --bg-url: url(assets/bg-mobile.jpg);
+  --stroke-color: rgba(255, 255, 255, 0.5);
+  --surface-color: rgba(255, 255, 255, 0.1);
+  --surface-color-hover: rgba(255, 255, 255, 0.05);
+  --highlight-color: rgba(255, 255, 255, 0.2);
+  --switch-bg-url: url(assets/moon-stars.svg);
+}
+
+.light {
+  --text-color: black;
+  --bg-url: url(assets/bg-mobile-light.jpg);
+  --stroke-color: rgba(0, 0, 0, 0.5);
+  --surface-color: rgba(0, 0, 0, 0.05);
+  --surface-color-hover: rgba(0, 0, 0, 0.02);
+  --highlight-color: rgba(0, 0, 0, 0.1);
+  --switch-bg-url: url(assets/sun.svg);
+}
+
+body {
+  /* Shorthand background: color image repeat position/size */
+  background: var(--bg-url) no-repeat top center/cover;
+}
+
+body * {
+  font-family: "Inter", sans-serif;
+  color: var(--text-color);
+}
+
+#container {
+  width: 360px;
+  margin: 56px auto 0px;
+  padding: 0 24px;
+
+  /* border: 1px solid red; */
+}
+
+/* Profile */
+#profile {
+  text-align: center;
+  padding: 24px;
+}
+
+#profile img {
+  width: 112px;
+
+  /* border: 1px solid blue; */
+}
+
+#profile p {
+  font-weight: 500;
+  line-height: 24px;
+  margin-top: 8px;
+
+  /* border: 1px solid blue; */
+}
+
+/* Switch */
+#switch {
+  width: 64px;
+  /* Centralizando como display:block */
+  margin: 4px auto;
+  /* Com esse atributo, ele faz com os elementos filhos se ajustem dentro do espaço relativo a ele */
+  position: relative;
+}
+
+#switch button {
+  width: 32px;
+  height: 32px;
+  background: white var(--switch-bg-url) no-repeat center;
+  border: 0;
+  border-radius: 50%;
+
+  /* Como esse valor atribuído, o CSS faz uma sobreposição de camadas */
+  position: absolute;
+  top: 50%;
+  right: 0;
+  left: 0;
+  /* Mudo o andar dele por meio do z-index */
+  z-index: 1;
+  transform: translateY(-50%);
+}
+
+.light #switch button {
+  right: 0;
+  left: initial;
+}
+
+#switch span {
+  display: block;
+  width: 64px;
+  height: 24px;
+  background: var(--surface-color);
+  border: 1px solid var(--stroke-color);
+  /* Essse efeito acrescenta um blur no elemento */
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 9999px;
+}
+
+/* Links */
+ul {
+  list-style: none;
+  /* Aplicar flex para adicionar gap entre os elementos filho*/
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px 0;
+}
+
+ul li a {
+  display: flex;
+  padding: 16px 24px;
+  /* Alinhando itens na vertical */
+  align-items: center;
+  /* Alinhando itens na horizontal */
+  justify-content: center;
+  background: var(--surface-color);
+  border: 1px solid var(--stroke-color);
+  /* Arrendondando as bordas dos botões */
+  border-radius: 8px;
+  /* Essse efeito acrescenta um blur no elemento */
+  /* Foi utilizado um webkit para certificar da compatibilidade com os navegadores */
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  /* Retirando o sublinhado do text */
+  text-decoration: none;
+  font-weight: 500;
+  /* Aplicando a transição no background do meu elemento por 0.2s  */
+  transition: background 0.2s;
+}
+
+ul li a:hover {
+  background: var(--surface-color-hover);
+  border: 1.5px solid var(--text-color);
+}
+
+#social-links {
+  padding: 24px 0;
+  display: flex;
+  justify-content: center;
+  /* align-items: flex-start; */
+  font-size: 24px;
+}
+
+#social-links a {
+  /* Aplicado display flex para garantir que os itens se mantém alinhados após a aplicação do efeito :hover */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+  border-radius: 50%;
+
+  transition: background 0.2s;
+}
+
+#social-links a:hover {
+  background: var(--highlight-color);
+  /* Esse valor de padding deve ser definido para que forme um círculo em volta do ícone */
+  padding: 16px;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  padding: 24px 0;
+  font-size: 14px;
+}
